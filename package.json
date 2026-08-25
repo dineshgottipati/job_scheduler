@@ -8,10 +8,10 @@
     "apps/*"
   ],
   "scripts": {
-    "postinstall": "npm run db:generate --workspace=@job-scheduler/database",
+    "postinstall": "node scripts/db-generate.js",
     "build": "npm run build --workspaces",
-    "db:generate": "npm run db:generate --workspace=@job-scheduler/database",
-    "db:push": "npm run db:push --workspace=@job-scheduler/database",
+    "db:generate": "node scripts/db-generate.js",
+    "db:push": "node scripts/db-push.js",
     "db:seed": "npm run db:seed --workspace=@job-scheduler/database",
     "dev:api": "npm run dev --workspace=@job-scheduler/api",
     "dev:worker": "npm run dev --workspace=@job-scheduler/worker",
