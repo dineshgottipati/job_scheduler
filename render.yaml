@@ -1,8 +1,9 @@
 services:
-  # 1. API Control Plane Web Service
+  # 1. API Control Plane Web Service (Free Tier)
   - type: web
     name: schedx-api
     env: node
+    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm run dev:api
     envVars:
@@ -15,17 +16,18 @@ services:
       - key: JWT_SECRET
         generateValue: true
 
-  # 2. Background Polling Worker Daemon
+  # 2. Background Polling Worker Daemon (Free Tier)
   - type: worker
     name: schedx-worker
     env: node
+    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm run dev:worker
     envVars:
       - key: DATABASE_URL
         value: file:./dev.db
 
-  # 3. Ant Design Web Dashboard Static Site
+  # 3. Ant Design Web Dashboard Static Site (Free Tier)
   - type: web
     name: schedx-dashboard
     env: static
