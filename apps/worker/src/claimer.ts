@@ -38,7 +38,7 @@ export class JobClaimer {
     const prisma = getPrismaClient();
 
     try {
-      return await prisma.$transaction(async (tx) => {
+      return await prisma.$transaction(async (tx: any) => {
         const now = new Date();
 
         // 1. Fetch active queues that are not paused and not deleted
@@ -95,7 +95,7 @@ export class JobClaimer {
           return [];
         }
 
-        const jobIdsToClaim = eligibleJobs.map((j) => j.id);
+        const jobIdsToClaim = eligibleJobs.map((j: any) => j.id);
         const leaseExpiresAt = new Date(now.getTime() + this.leaseDurationSeconds * 1000);
 
         // 4. Update selected jobs to RUNNING status

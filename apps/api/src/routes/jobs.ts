@@ -164,8 +164,8 @@ export async function jobRoutes(fastify: FastifyInstance) {
       });
     }
 
-    const createdJobs = await prisma.$transaction(async (tx) => {
-      const results = [];
+    const createdJobs = await prisma.$transaction(async (tx: any) => {
+      const results: any[] = [];
       for (const item of jobs) {
         if (item.idempotencyKey) {
           const existing = await tx.job.findUnique({ where: { idempotencyKey: item.idempotencyKey } });
