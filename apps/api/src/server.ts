@@ -102,6 +102,13 @@ export async function buildServer(): Promise<FastifyInstance> {
   });
 
   // Health and Readiness endpoints
+  fastify.get('/', async () => ({
+    name: 'SchedX Distributed Job Scheduler API',
+    status: 'healthy',
+    documentation: '/documentation',
+    health: '/health',
+    version: '1.0.0'
+  }));
   fastify.get('/health', async () => ({ status: 'ok', timestamp: new Date().toISOString() }));
   fastify.get('/ready', async (request, reply) => {
     try {
