@@ -8,6 +8,7 @@
     "apps/*"
   ],
   "scripts": {
+    "postinstall": "npm run db:generate --workspace=@job-scheduler/database",
     "build": "npm run build --workspaces",
     "db:generate": "npm run db:generate --workspace=@job-scheduler/database",
     "db:push": "npm run db:push --workspace=@job-scheduler/database",
