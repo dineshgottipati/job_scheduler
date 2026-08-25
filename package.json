@@ -1,0 +1,23 @@
+{
+  "name": "job-scheduler-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-inspired distributed job scheduling platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "db:generate": "npm run db:generate --workspace=@job-scheduler/database",
+    "db:push": "npm run db:push --workspace=@job-scheduler/database",
+    "db:seed": "npm run db:seed --workspace=@job-scheduler/database",
+    "dev:api": "npm run dev --workspace=@job-scheduler/api",
+    "dev:worker": "npm run dev --workspace=@job-scheduler/worker",
+    "dev:web": "npm run dev --workspace=@job-scheduler/web",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
